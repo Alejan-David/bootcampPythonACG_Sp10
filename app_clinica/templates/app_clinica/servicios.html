@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Servicios Veterinarios</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+</head>
+<body>
+    <h1>Nuestros Servicios</h1>
+    <ul>
+        <li>Registrar mascota</li>
+        <li>Registrar consulta</li>
+        <li>Listar mascotas</li>
+        <li>Ver historial de consultas</li>
+    </ul>
+    <br>
+    <a href="{% url 'inicio' %}">Volver al inicio</a>
+</body>
+
+</html>

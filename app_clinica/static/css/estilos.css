@@ -1,0 +1,66 @@
+/* Fondo general y fuente */
+body {
+    background-color: #fef8f4;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    padding: 40px;
+    color: #333;
+}
+
+/* Imagen del logo */
+img.logo {
+    width: 265px;
+    margin-bottom: 20px;
+}
+
+/* Título principal */
+h1 {
+    color: #30887a;
+    font-size: 2.5em;
+}
+
+/* Subtítulo */
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #555;
+}
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: center;
+}
+
+li{
+    color: #30887a;
+    font-size: 1.2em;
+}
+
+/* Texto general */
+p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* Botones de navegación */
+a {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #30887a;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover */
+a:hover {
+    background-color: #58b0a1;
+}
+
+/* Reloj */
+.reloj {
+    margin-top: 30px;
+    font-size: 1.1em;
+    color: #666;
+}
