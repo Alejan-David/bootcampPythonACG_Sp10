@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a la Clínica Veterinaria ACG</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+</head>
+<body>
+<img src="{% static 'imagenes/logo_veterinaria.png' %}" alt="Logo Veterinaria ACG" class="logo">
+
+    <h1>¡Bienvenido a nuestra Clínica Veterinaria ACG!</h1>
+    <h2>Gracias por visitarnos. Estamos aquí para cuidar de tus mascotas.</h2>
+    <br>
+    <br>
+    <nav>
+       | <a href="{% url 'servicios' %}">Nuestros Servicios</a> |
+    </nav>
+    <br>
+        <div class="reloj">
+        <p id="fecha-hora"></p>
+    </div>
+    <script>
+        function actualizarFechaHora() {
+            const fechaHora = new Date();
+            const opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const fecha = fechaHora.toLocaleDateString('es-CO', opciones);
+            const hora = fechaHora.toLocaleTimeString('es-CO');
+            document.getElementById("fecha-hora").textContent = `${fecha} - ${hora}`;
+        }
+
+        setInterval(actualizarFechaHora, 1000);
+        actualizarFechaHora();
+    </script>
+
+</body>
+</html>

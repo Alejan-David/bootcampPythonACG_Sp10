@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Servicios Veterinarios</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+</head>
+<body>
+    <h1>Nuestros Servicios</h1>
+    <br/> |
+
+    <a href="{% url 'menu_duenos' %}">Gestión de Dueños</a> |
+
+    <a href="{% url 'menu_mascotas' %}">Gestión de Mascotas</a> |
+        
+    <a href="{% url 'menu_consultas' %}">Gestión de Consultas</a> |
+    
+    <a href="{% url 'inicio' %}">Volver al inicio</a>   |
+</body>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<img src="{% static 'imagenes/logo_veterinaria.png' %}" alt="Logo Veterinaria ACG" class="logo">
+<h3>La salud de tus mascotas es nuestra prioridad. Ofrecemos servicios veterinarios de calidad</h3>
+</html>

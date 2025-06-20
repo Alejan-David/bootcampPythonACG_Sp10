@@ -64,3 +64,46 @@ a:hover {
     font-size: 1.1em;
     color: #666;
 }
+/* Estilo para la tabla de dueños */
+table {
+    margin: 0 auto; /* centrado horizontal */
+    border-collapse: collapse;
+    width: 80%;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th {
+    background-color: #30887a;
+    color: white;
+    padding: 12px;
+    font-size: 1.1em;
+    border-bottom: 2px solid #ddd;
+}
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1em;
+    color: #333;
+}
+
+tr:nth-child(even) {
+    background-color: #f4fdfc;
+}
+
+tr:hover {
+    background-color: #e0f7f3;
+}
+/* Mensaje de resultado */
+.mensaje {
+    margin: 20px auto;
+    width: 60%;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    background-color: #e8f6f4;
+    color: #2a7469;
+    border: 1px solid #bce0da;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

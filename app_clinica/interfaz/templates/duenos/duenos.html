@@ -1,0 +1,72 @@
+{% load static %}
+{% load filtros_extra %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión Dueño</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <h1>Gestión Dueño</h1>
+
+    <!-- Formulario único -->
+    <form method="post">
+        {% csrf_token %}
+        <label for="documento">Documento:</label>
+        <input type="text" name="documento" required>
+        <button type="submit" name="accion" value="buscar">Buscar Dueño por documento</button>
+    </form>
+
+    <!-- Formulario completo para registrar, modificar y eliminar -->
+    <form method="post" style="margin-top: 15px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" name="accion" value="registrar">Registrar Dueño</button>
+        <button type="submit" name="accion" value="modificar" {% if not dueno_encontrado %}disabled{% endif %}>Modificar Dueño</button>
+        <button type="submit" name="accion" value="eliminar" {% if not dueno_encontrado %}disabled{% endif %}>Eliminar Dueño</button>
+    </form>
+
+    <!-- Botón para listar -->
+    <form method="post" style="margin-top: 15px;">
+        {% csrf_token %}
+        <button type="submit" name="accion" value="listar">Listar Dueños</button>
+    </form>
+
+<!-- Mensaje -->
+{% if mensaje %}
+    <div class="mensaje">{{ mensaje }}</div>
+{% endif %}
+
+<br><br><a href="{% url 'servicios' %}">Volver a Servicios</a>
+
+<!-- Tabla -->
+{% if resultados %}
+    <h2>Dueños Registrados</h2>
+    <table border="1" cellpadding="5" style="margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>Documento</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dueno in resultados %}
+                <tr>
+                    <td>{{ dueno.documento }}</td>
+                    <td>{{ dueno.nombre }}</td>
+                    <td>{{ dueno.telefono }}</td>
+                    <td>{{ dueno.direccion }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay resultados para mostrar.</p>
+{% endif %}
+</body>
+</html>
