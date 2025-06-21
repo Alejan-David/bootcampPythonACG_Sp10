@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app_clinica',
+    'app_clinica.interfaz',
 
 ]
 
@@ -35,7 +36,7 @@ ROOT_URLCONF = 'clinica_veterinaria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Carpeta donde van tus templates HTML
+        'DIRS': [BASE_DIR / 'interfaz' / 'templates'],  # Carpeta donde van tus templates HTML
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

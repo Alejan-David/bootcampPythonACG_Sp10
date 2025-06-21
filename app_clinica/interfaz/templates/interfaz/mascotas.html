@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,20 +8,65 @@
 </head>
 <body>
     <h1>Gestión Mascotas</h1>
-    <form method="POST">
+
+    <!-- Formulario para buscar por documento -->
+    <form method="post">
+        {% csrf_token %}
+        <label for="documento_dueno">Documento del Dueño:</label>
+        <input type="text" name="documento_dueno" required>
+        <button type="submit" name="accion" value="buscar">Buscar</button>
+    </form>
+
+    {% if form %}
+    <!-- Formulario para registrar/modificar/eliminar -->
+    <form method="post" style="margin-top: 15px;">
         {% csrf_token %}
         {{ form.as_p }}
+
+        <button type="submit" name="accion" value="registrar">Registrar Mascota</button>
+        <button type="submit" name="accion" value="modificar" {% if not mascota_encontrada %}disabled{% endif %}>Modificar Mascota</button>
+        <button type="submit" name="accion" value="eliminar" {% if not mascota_encontrada %}disabled{% endif %}>Eliminar Mascota</button>
     </form>
-    <br> |
-    <button type="submit">Guardar Mascota</button> |
-    <button type="submit">Buscar Mascota por dueño</button> |
-    <button type="submit">Modificar Mascota</button> |
-    <button type="submit">Eliminar Mascota</button> |
-    <br>
-    <br>
-    <br>
-    <a href="{% url 'servicios' %}">Volver a Servicios</a>
+    {% endif %}
+
+    <!-- Botón para listar -->
+    <form method="post" style="margin-top: 15px;">
+        {% csrf_token %}
+        <button type="submit" name="accion" value="listar">Listar Mascotas</button>
+    </form>
+
+    {% if mensaje %}
+        <div class="mensaje">{{ mensaje }}</div>
+    {% endif %}
+
+    <br><br><a href="{% url 'servicios' %}">Volver a Servicios</a>
+
+{% if resultados %}
+    <h2>Mascotas Registradas</h2>
+    <table border="1" cellpadding="5" style="margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Documento dueño</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for mascota in resultados %}
+                <tr>
+                    <td>{{ mascota.nombre }}</td>
+                    <td>{{ mascota.especie }}</td>
+                    <td>{{ mascota.raza }}</td>
+                    <td>{{ mascota.edad }}</td>
+                    <td>{{ mascota.dueno.documento }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay resultados para mostrar.</p>
+{% endif %}
 </body>
 </html>
-
- 

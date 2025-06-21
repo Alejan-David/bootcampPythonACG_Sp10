@@ -4,7 +4,7 @@ from  app_clinica.models import MascotaDB,DuenoDB,ConsultaDB
 class MascotaForm(forms.ModelForm):
     class Meta:
         model = MascotaDB
-        fields = ['nombre', 'especie', 'raza', 'edad', 'documento_dueno']
+        fields = ['nombre', 'especie', 'raza', 'edad'] 
 
 class DuenoForm(forms.ModelForm):
     class Meta:
@@ -15,6 +15,5 @@ class DuenoForm(forms.ModelForm):
 class ConsultaForm(forms.ModelForm):
     class Meta:
         model = ConsultaDB
-        fields = ['fecha', 'motivo', 'diagnostico', 'id_mascota']
-
+        exclude = ['mascota', 'activo']  
         
